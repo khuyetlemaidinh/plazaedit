@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lộc An Đông Plaza - Fashion Website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/80 border-b border-gray-200/50 shadow-sm transition-all duration-300">
+    <div class="container mx-auto px-6 lg:px-12 py-5 flex items-center justify-between">
+      <h1 class="text-2xl lg:text-3xl font-serif font-bold tracking-tight text-gray-900">
+        LỘC AN ĐÔNG
+      </h1>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+  <a href="#home" class="nav-link">TRANG CHỦ</a>
+  <a href="#products" class="nav-link">SẢN PHẨM</a>
+  <a href="#about" class="nav-link">GIỚI THIỆU</a>
+  <a href="#community" class="nav-link">HOẠT ĐỘNG</a>
+  <a href="#press" class="nav-link">BÁO CHÍ</a> <a href="#collections" class="nav-link">BỘ SƯU TẬP</a>
+  <a href="#blog" class="nav-link">BLOG</a>
+</nav>
+
+      <button class="md:hidden text-2xl">☰</button>
+    </div>
+  </header>
+
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    h1, h2, h3, .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .nav-link {
+      position: relative;
+      color: #374151;
+      transition: color 0.3s;
+    }
+    
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0%;
+      height: 1px;
+      background: #000;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: #000;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.1;
+    }
+
+    .product-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .product-card:hover {
+      transform: translateY(-12px);
+    }
+
+    .product-card img {
+      transition: transform 0.6s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .luxury-card {
+      transition: all 0.4s ease;
+    }
+
+    .luxury-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #1f2937 0%, #000 100%);
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #000, transparent);
+    }
+  </style>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 min-h-screen flex items-center">
+    <div class="absolute inset-0 z-0">
+      <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763448855/2fa_tiktok_vv0vvi.jpg" 
+           class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-transparent"></div>
+    </div>
+    
+    <div class="relative z-10 container mx-auto px-6 lg:px-12">
+      <div class="max-w-3xl animate-fade-in">
+        <p class="text-white/90 text-sm lg:text-base tracking-widest mb-4 font-light">XUÂN HÈ 2025</p>
+        <h2 class="hero-title font-serif font-bold text-white mb-6 leading-tight">
+          Định Nghĩa Lại<br/>Phong Cách Của Bạn
+        </h2>
+        <p class="text-white/90 text-lg lg:text-xl mb-10 leading-relaxed font-light max-w-2xl">
+          Khám phá bộ sưu tập thời trang cao cấp, nơi sự tinh tế gặp gỡ hiện đại
+        </p>
+        <button class="btn-primary px-10 py-4 rounded-none text-white font-medium tracking-wider text-sm">
+          KHÁM PHÁ BỘ SƯU TẬP
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SẢN PHẨM NỔI BẬT -->
+  <section id="products" class="py-24 lg:py-32 bg-gray-50">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-4xl lg:text-5xl font-serif font-bold mb-4">Sản Phẩm Nổi Bật</h2>
+        <p class="text-gray-600 mt-8 text-lg">Những thiết kế được yêu thích nhất mùa này</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Product 1 -->
+        <div class="product-card bg-white overflow-hidden group">
+          <div class="overflow-hidden">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763448856/581696965_771895255901631_7531800858801426847_n_wqdt4q.jpg" 
+                 class="w-full h-96 object-cover" />
+          </div>
+          <div class="p-6">
+            <p class="text-xs tracking-widest text-gray-500 mb-2">Sơ Mi Nam</p>
+            <h3 class="font-serif text-2xl font-semibold mb-2">Sơ Mi Cao Cấp</h3>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Thiết kế thanh lịch, chất liệu cao cấp từ Châu Âu</p>
+            <div class="flex items-center justify-between">
+              <p class="text-xl font-semibold">150.000₫</p>
+              <button class="text-sm font-medium border-b-2 border-black pb-1 hover:border-gray-400 transition-colors">
+                Lôc An Đông Plaza
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card bg-white overflow-hidden group">
+          <div class="overflow-hidden">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763448856/583911211_771895285901628_4793474097345288583_n_ulbvte.jpg" 
+                 class="w-full h-96 object-cover" />
+          </div>
+          <div class="p-6">
+            <p class="text-xs tracking-widest text-gray-500 mb-2">Sơ Mi Nam</p>
+            <h3 class="font-serif text-2xl font-semibold mb-2">Sơ mi tay ngắn</h3>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Sang trọng, quyến rũ cho những dịp đặc biệt</p>
+            <div class="flex items-center justify-between">
+              <p class="text-xl font-semibold">150.000₫</p>
+              <button class="text-sm font-medium border-b-2 border-black pb-1 hover:border-gray-400 transition-colors">
+                Lôc An Đông Plaza
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card bg-white overflow-hidden group">
+          <div class="overflow-hidden">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763448856/582650207_771895279234962_310389057814764946_n_mxef30.jpg" 
+                 class="w-full h-96 object-cover" />
+          </div>
+          <div class="p-6">
+            <p class="text-xs tracking-widest text-gray-500 mb-2">Sơ Mi Nam</p>
+            <h3 class="font-serif text-2xl font-semibold mb-2">Suit Premium Italia</h3>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">Phong cách doanh nhân đẳng cấp quốc tế</p>
+            <div class="flex items-center justify-between">
+              <p class="text-xl font-semibold">500.000₫</p>
+              <button class="text-sm font-medium border-b-2 border-black pb-1 hover:border-gray-400 transition-colors">
+                Lôc An Đông Plaza
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIỚI THIỆU -->
+  <section id="about" class="py-24 lg:py-32 bg-white">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763449162/Unknown_tjd57f.jpg" 
+               class="w-full h-full object-cover rounded-sm shadow-2xl" />
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="text-sm tracking-widest text-gray-500 mb-4">VỀ CHÚNG TÔI</p>
+          <h2 class="text-4xl lg:text-5xl font-serif font-bold mb-6 leading-tight">
+            Nơi Phong Cách<br/>Gặp Gỡ Đẳng Cấp
+          </h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            Lộc An Đông Plaza được thành lập với sứ mệnh mang đến những trải nghiệm thời trang cao cấp, 
+            kết hợp giữa thiết kế đương đại và chất lượng vượt trội.
+          </p>
+          <p class="text-gray-600 text-lg leading-relaxed mb-8">
+            Với hơn 15 năm kinh nghiệm, chúng tôi tự hào là điểm đến tin cậy của những người 
+            đam mê phong cách sống tinh tế và sang trọng.
+          </p>
+          <div class="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200">
+            <div>
+              <p class="text-4xl font-serif font-bold mb-2">15+</p>
+              <p class="text-sm text-gray-600">Năm kinh nghiệm</p>
+            </div>
+            <div>
+              <p class="text-4xl font-serif font-bold mb-2">50K+</p>
+              <p class="text-sm text-gray-600">Khách hàng</p>
+            </div>
+            <div>
+              <p class="text-4xl font-serif font-bold mb-2">200+</p>
+              <p class="text-sm text-gray-600">Thiết kế độc quyền</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="press" class="py-24 lg:py-32 bg-white">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-4xl lg:text-5xl font-serif font-bold mb-4">Báo Chí Nói Về Chúng Tôi</h2>
+        <p class="text-gray-600 mt-8 text-lg max-w-3xl mx-auto">
+          Sự ghi nhận từ các cơ quan truyền thông uy tín về những nỗ lực đóng góp cho cộng đồng của Lộc An Đông Plaza
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 lg:gap-16">
+        
+        <article class="group flex flex-col h-full">
+          <div class="overflow-hidden rounded-sm mb-6 relative">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763449340/hocbong_u199so.jpg" 
+                 class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-95 group-hover:brightness-100" 
+                 alt="Trao học bổng Lộc An Đông" />
+            <div class="absolute top-4 left-4 bg-black text-white text-xs font-bold px-3 py-1 tracking-widest uppercase">
+              Giáo Dục Cuộc Sống
+            </div>
+          </div>
+          
+          <div class="flex-1 flex flex-col">
+            <h3 class="font-serif text-2xl lg:text-3xl font-bold mb-4 leading-tight group-hover:text-gray-600 transition-colors">
+              Lộc An Đông Plaza đồng hành trao tặng học bổng cho học sinh nghèo vượt khó mùa Trung Thu 2025
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">
+              Đồng hành cùng Ủy ban Mặt trận Tổ quốc Việt Nam xã Bình Chánh, chúng tôi đã trao những phần quà ý nghĩa, tiếp thêm động lực cho các em học sinh nghèo hiếu học.
+            </p>
+            <div class="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+              <span class="text-sm text-gray-400 font-medium">Ngày đăng: 15/09/2025</span>
+              <a href="https://giaoduccuocsong.vn/loc-an-dong-plaza-dong-hanh-cung-uy-ban-mat-tran-to-quoc-viet-nam-xa-binh-chanh-trao-tang-hoc-bong-cho-hoc-sinh-ngheo-vuot-kho-nhan-dip-trung-thu-2025-a17543.html" 
+                 target="_blank"
+                 class="text-sm font-bold border-b-2 border-black pb-1 hover:text-gray-600 hover:border-gray-400 transition-all">
+                ĐỌC BÀI VIẾT →
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="group flex flex-col h-full">
+          <div class="overflow-hidden rounded-sm mb-6 relative">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763449343/khanhthanh1_xrlqsd.jpg" 
+                 class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-95 group-hover:brightness-100" 
+                 alt="Khánh thành cầu Kênh A7" />
+            <div class="absolute top-4 left-4 bg-black text-white text-xs font-bold px-3 py-1 tracking-widest uppercase">
+              Thời Báo Doanh Nhân
+            </div>
+          </div>
+          
+          <div class="flex-1 flex flex-col">
+            <h3 class="font-serif text-2xl lg:text-3xl font-bold mb-4 leading-tight group-hover:text-gray-600 transition-colors">
+              Lan tỏa giá trị nhân văn: Đồng hành cùng Quỹ Tấm Lòng Vàng xây dựng cầu Kênh A7
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">
+              Lộc An Đông Plaza tự hào góp phần kiến tạo diện mạo giao thông nông thôn mới tại Cần Thơ, mang lại sự an toàn và thuận tiện cho bà con nhân dân.
+            </p>
+            <div class="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+              <span class="text-sm text-gray-400 font-medium">Ngày đăng: 20/09/2025</span>
+              <a href="https://thoibaodoanhnhan.net/doanh-nghiep-loc-an-dong-plaza-dong-hanh-cung-quy-tam-long-vang-lao-dong-xay-dung-cau-kenh-a7-lan-toa-nhung-gia-tri-nhan-van-tai-can-tho-56770.html" 
+                 target="_blank"
+                 class="text-sm font-bold border-b-2 border-black pb-1 hover:text-gray-600 hover:border-gray-400 transition-all">
+                ĐỌC BÀI VIẾT →
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOẠT ĐỘNG CỘNG ĐỒNG -->
+  <section id="community" class="py-24 lg:py-32 bg-gray-50">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-4xl lg:text-5xl font-serif font-bold mb-4">Hoạt Động Cộng Đồng</h2>
+        <p class="text-gray-600 mt-8 text-lg max-w-3xl mx-auto">
+          Chúng tôi tin rằng thành công đích thực là khi có thể chia sẻ và lan tỏa giá trị tích cực đến cộng đồng
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+        <div class="luxury-card bg-white p-8 lg:p-10 rounded-sm shadow-lg">
+          <div class="overflow-hidden rounded-sm mb-6">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763449343/khanhthanh1_xrlqsd.jpg" 
+                 class="w-full h-64 object-cover" />
+          </div>
+          <h3 class="font-serif text-2xl font-semibold mb-4">Lễ Khánh Thành</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Lễ khánh thành cây cầu mới là một cột mốc đặc biệt, đánh dấu sự hoàn thành của công trình giao thông mang nhiều <span class="font-semibold text-gray-900">ý nghĩa cho cộng đồng địa phương</span>.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            . Cây cầu được xây dựng nhằm tạo điều kiện di chuyển thuận lợi, giúp người dân đi lại an toàn hơn, đặc biệt là học sinh và người lao động tại các khu vực lân cận.
+          </p>
+          <button class="text-sm font-medium border-b-2 border-black pb-1 hover:border-gray-400 transition-colors">
+            Lộc An Đông Plaza →
+          </button>
+        </div>
+
+        <div class="luxury-card bg-white p-8 lg:p-10 rounded-sm shadow-lg">
+          <div class="overflow-hidden rounded-sm mb-6">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763449340/vogiacu2_ssw5ey.jpg" 
+                 class="w-full h-64 object-cover" />
+          </div>
+          <h3 class="font-serif text-2xl font-semibold mb-4">Hỗ Trợ Người Vô Gia Cư</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Đội ngũ tình nguyện phát quần áo ấm, thức ăn mỗi đêm tại TP.HCM cho hơn 
+            <span class="font-semibold text-gray-900">300 người</span> đang gặp khó khăn.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Chúng tôi không chỉ trao tặng đồ dùng mà còn kết nối cơ hội việc làm, 
+            giúp họ tái hòa nhập cộng đồng và cải thiện cuộc sống.
+          </p>
+          <button class="text-sm font-medium border-b-2 border-black pb-1 hover:border-gray-400 transition-colors">
+            Lộc An Đông Plaza →
+          </button>
+        </div>
+
+        <div class="luxury-card bg-white p-8 lg:p-10 rounded-sm shadow-lg">
+          <div class="overflow-hidden rounded-sm mb-6">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763449341/vogiacu_p6dc3r.jpg" 
+                 class="w-full h-64 object-cover" />
+          </div>
+          <h3 class="font-serif text-2xl font-semibold mb-4">Hỗ Trợ Người Vô Gia Cư</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Đội ngũ tình nguyện phát quần áo ấm, thức ăn mỗi đêm tại TP.HCM cho hơn 
+            <span class="font-semibold text-gray-900">300 người</span> đang gặp khó khăn.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Chúng tôi không chỉ trao tặng đồ dùng mà còn kết nối cơ hội việc làm, 
+            giúp họ tái hòa nhập cộng đồng và cải thiện cuộc sống.
+          </p>
+          <button class="text-sm font-medium border-b-2 border-black pb-1 hover:border-gray-400 transition-colors">
+            Lộc An Đông Plaza →
+          </button>
+        </div>
+
+        <div class="luxury-card bg-white p-8 lg:p-10 rounded-sm shadow-lg">
+          <div class="overflow-hidden rounded-sm mb-6">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763449340/hocbong_u199so.jpg" 
+                 class="w-full h-64 object-cover" />
+          </div>
+          <h3 class="font-serif text-2xl font-semibold mb-4">Quỹ Học Bổng</h3>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Hỗ trợ sinh viên nghèo theo đuổi đam mê thời trang và thiết kế. 
+            Đã trao hơn <span class="font-semibold text-gray-900">350 suất học bổng</span> toàn quốc.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Chúng tôi không chỉ hỗ trợ tài chính mà còn mentorship từ các chuyên gia, 
+            giúp các bạn trẻ phát triển sự nghiệp trong ngành thời trang.
+          </p>
+          <button class="text-sm font-medium border-b-2 border-black pb-1 hover:border-gray-400 transition-colors">
+            Lộc An Đông Plaza →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BỘ SƯU TẬP -->
+  <section id="collections" class="py-24 lg:py-32 bg-black text-white">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-serif font-bold mb-4">Bộ Sưu Tập Độc Quyền</h2>
+        <p class="text-white/70 mt-8 text-lg max-w-3xl mx-auto">
+          Những thiết kế giới hạn, được chế tác tỉ mỉ từ chất liệu cao cấp nhất
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="group overflow-hidden rounded-sm">
+          <div class="relative overflow-hidden">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763450000/anhthietke4_emy8la.jpg" 
+                 class="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <h3 class="font-serif text-2xl font-semibold mb-2">Luxury Collection</h3>
+              <p class="text-white/80 text-sm">Giới hạn 50 sản phẩm</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="group overflow-hidden rounded-sm">
+          <div class="relative overflow-hidden">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763450000/anhthietke3_ihblop.jpg" 
+                 class="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <h3 class="font-serif text-2xl font-semibold mb-2">Elegant Women</h3>
+              <p class="text-white/80 text-sm">Phiên bản đặc biệt</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="group overflow-hidden rounded-sm">
+          <div class="relative overflow-hidden">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763450000/anh1_thiet_ke_ansqv1.jpg" 
+                 class="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <h3 class="font-serif text-2xl font-semibold mb-2">Modern Men Style</h3>
+              <p class="text-white/80 text-sm">Bộ sưu tập Thu Đông</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="py-24 lg:py-32 bg-white">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="text-center mb-16">
+        <h2 class="section-title text-4xl lg:text-5xl font-serif font-bold mb-4">Tin Tức & Cảm Hứng</h2>
+        <p class="text-gray-600 mt-8 text-lg">Khám phá xu hướng và bí quyết thời trang mới nhất</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <article class="group">
+          <div class="overflow-hidden rounded-sm mb-6">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763450000/anhthietke2_tfk0b8.jpg" 
+                 class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <p class="text-xs tracking-widest text-gray-500 mb-3">XU HƯỚNG 2025</p>
+          <h3 class="font-serif text-2xl font-semibold mb-3 group-hover:text-gray-600 transition-colors">
+            Minimalism Trong Thời Trang Cao Cấp
+          </h3>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Khám phá cách phong cách tối giản đang định hình lại ngành thời trang luxury...
+          </p>
+          <button class="text-sm font-medium border-b border-gray-300 pb-1 hover:border-black transition-colors">
+            ĐỌC THÊM →
+          </button>
+        </article>
+
+        <article class="group">
+          <div class="overflow-hidden rounded-sm mb-6">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763450000/anhthietke5_q9r7r2.jpg" 
+                 class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <p class="text-xs tracking-widest text-gray-500 mb-3">STYLING TIPS</p>
+          <h3 class="font-serif text-2xl font-semibold mb-3 group-hover:text-gray-600 transition-colors">
+            5 Cách Phối Đồ Công Sở Sang Trọng
+          </h3>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Bí quyết tạo nên phong cách chuyên nghiệp và thanh lịch cho môi trường làm việc...
+          </p>
+          <button class="text-sm font-medium border-b border-gray-300 pb-1 hover:border-black transition-colors">
+            ĐỌC THÊM →
+          </button>
+        </article>
+
+        <article class="group">
+          <div class="overflow-hidden rounded-sm mb-6">
+            <img src="https://res.cloudinary.com/dxbdvv0dq/image/upload/v1763450000/anhthietke6_nugfkp.jpg" 
+                 class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <p class="text-xs tracking-widest text-gray-500 mb-3">FABRIC GUIDE</p>
+          <h3 class="font-serif text-2xl font-semibold mb-3 group-hover:text-gray-600 transition-colors">
+            Chất Liệu Cao Cấp Bạn Nên Biết
+          </h3>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Tìm hiểu về các loại vải đẳng cấp và cách chăm sóc chúng đúng cách...
+          </p>
+          <button class="text-sm font-medium border-b border-gray-300 pb-1 hover:border-black transition-colors">
+            ĐỌC THÊM →
+          </button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="py-24 lg:py-32 bg-gray-900 text-white">
+    <div class="container mx-auto px-6 lg:px-12 text-center">
+      <h2 class="text-4xl lg:text-5xl font-serif font-bold mb-6">
+        Trải Nghiệm Đẳng Cấp Thời Trang
+      </h2>
+      <p class="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
+        Đăng ký nhận thông tin về bộ sưu tập mới và ưu đãi độc quyền dành riêng cho bạn
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-xl mx-auto">
+        <input type="email" 
+               placeholder="Nhập email của bạn" 
+               class="flex-1 px-6 py-4 rounded-none bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50" />
+        <button class="px-10 py-4 bg-white text-gray-900 font-medium tracking-wider text-sm hover:bg-gray-100 transition-colors rounded-none">
+          ĐĂNG KÝ NGAY
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black text-white py-16 lg:py-20">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <h3 class="font-serif text-2xl font-bold mb-6">LỘC AN ĐÔNG</h3>
+          <p class="text-white/60 leading-relaxed text-sm">
+            Thời trang cao cấp cho người sành điệu. Nơi phong cách gặp gỡ đẳng cấp.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-sm tracking-wider mb-6">KHÁM PHÁ</h4>
+          <ul class="space-y-3 text-white/60 text-sm">
+            <li><a href="#products" class="hover:text-white transition-colors">Sản phẩm</a></li>
+            <li><a href="#collections" class="hover:text-white transition-colors">Bộ sưu tập</a></li>
+            <li><a href="#about" class="hover:text-white transition-colors">Về chúng tôi</a></li>
+            <li><a href="#blog" class="hover:text-white transition-colors">Blog</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-sm tracking-wider mb-6">HỖ TRỢ</h4>
+          <ul class="space-y-3 text-white/60 text-sm">
+            <li><a href="#" class="hover:text-white transition-colors">Chính sách đổi trả</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Hướng dẫn mua hàng</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Chính sách bảo mật</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Câu hỏi thường gặp</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-sm tracking-wider mb-6">LIÊN HỆ</h4>
+          <ul class="space-y-3 text-white/60 text-sm">
+            <li>Email: info@locandongplaza.com.vn</li>
+            <li>Hotline: 098 688 38 78</li>
+            <li>Địa chỉ: Q.1, TP.HCM</li>
+          </ul>
+          <div class="flex gap-4 mt-6">
+            <a href="#" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all">
+              <span class="text-xs">FB</span>
+            </a>
+            <a href="#" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all">
+              <span class="text-xs">IG</span>
+            </a>
+            <a href="#" class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all">
+              <span class="text-xs">YT</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-sm">
+          <p>© 2025 Lộc An Đông Plaza. All rights reserved.</p>
+          <div class="flex gap-6">
+            <a href="#" class="hover:text-white transition-colors">Điều khoản sử dụng</a>
+            <a href="#" class="hover:text-white transition-colors">Chính sách bảo mật</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Header shadow on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+  </script>
+
+</body>
+</html>
